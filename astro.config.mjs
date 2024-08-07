@@ -3,25 +3,29 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
-	integrations: [
-		starlight({
-			title: 'My Docs',
-			social: {
-				github: 'https://github.com/withastro/starlight',
-			},
-			sidebar: [
-				{
-					label: 'Guides',
-					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
-					],
-				},
-				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
-				},
-			],
-		}),
-	],
+  integrations: [
+    starlight({
+      title: 'Nemo Rule Engine',
+      social: {
+        github: 'https://github.com/knowsys/nemo',
+      },
+      sidebar: [
+        {
+          label: 'Guides',
+          items: [
+            // Each item here is one entry in the navigation menu.
+            { label: 'Installing', slug: 'guides/installing' },
+            { label: 'Command Line', slug: 'guides/cli' },
+            { label: 'Rule Language', slug: 'guides/tour' },
+            { label: 'Broser Integration', slug: 'guides/wasm' },
+            { label: 'Python API', slug: 'guides/python' },
+          ],
+        },
+        {
+          label: 'Language Reference',
+          autogenerate: { directory: 'reference' },
+        },
+      ],
+    }),
+  ],
 });
