@@ -4,6 +4,7 @@ import starlight from '@astrojs/starlight';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://matzemathics.github.io/nemo-docs-unofficial.github.io/',
+  base: '/nemo-docs-unofficial.github.io',
   integrations: [
     starlight({
       title: 'Nemo Rule Engine',
