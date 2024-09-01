@@ -52,7 +52,7 @@ nixpkgs.overlays = [ nemo.overlays.default ];
 environment.systemPackages = [ pkgs.nemo ];
 ```
 
-We also provide the [[Python|Python integration]] and [[Javascript|Browser integration]] bindings as flake outputs (`packages.*.nemo-python`, `packages.*.nemo-wasm`). There are even `pypthon` and `nodejs` packages that have the respective bindings available, so you can, e.g., run a `python` interpreter with Nemo bindings by executing
+We also provide the [Python](/nemo-doc/guides/python) and [Javascript](/nemo-doc/guides/wasm) bindings as flake outputs (`packages.*.nemo-python`, `packages.*.nemo-wasm`). There are even `pypthon` and `nodejs` packages that have the respective bindings available, so you can, e.g., run a `python` interpreter with Nemo bindings by executing
 
 ```bash
 nix run github:knowsys/nemo#python3

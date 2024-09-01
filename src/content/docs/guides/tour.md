@@ -8,7 +8,7 @@ Nemo is controlled by programs in a simple rule language, where a *rule* is a ba
 adult(?X) :- person(?X), age(?X,?age), ?age >= 18.
 ```
 
-Rules are meaningful and can be read by humans: If you know what `person` and `age` represent in your application, then you can understand the above rule, no matter what other rules you use, which order you write them in, or how the rules may depend on the outputs of other rules. The emphasis is on what you want to do rather than how it needs to be realized on a technical level, whether you run Nemo [as a command-line client](/guides/cli) or [in your browser](https://tools.iccl.inf.tu-dresden.de/nemo). In other words, Nemo is *fully declarative*.
+Rules are meaningful and can be read by humans: If you know what `person` and `age` represent in your application, then you can understand the above rule, no matter what other rules you use, which order you write them in, or how the rules may depend on the outputs of other rules. The emphasis is on what you want to do rather than how it needs to be realized on a technical level, whether you run Nemo [as a command-line client](/nemo-doc/guides/cli) or [in your browser](https://tools.iccl.inf.tu-dresden.de/nemo). In other words, Nemo is *fully declarative*.
 
 In addition, Nemo integrates modern language features. You can use Unicode characters in all your data and identifiers, process URIs and abbreviate them with namespace prefixes, and load data from many file formats. This is also why Nemo deviates from the traditional Prolog-style logic programming syntax in some places.
 
@@ -29,7 +29,7 @@ parent(?X, ?Y) :- mother(?X, ?Y) .
 parent(?X, ?Y) :- father(?X, ?Y) .
 ```
 
-***Hint:*** You can try out this example, and all the other examples below, at [Nemo's public online demo page](https://tools.iccl.inf.tu-dresden.de/nemo/). Of course, it will also work in the [Nemo client](/guides/installing), if you have it installed.
+***Hint:*** You can try out this example, and all the other examples below, at [Nemo's public online demo page](https://tools.iccl.inf.tu-dresden.de/nemo/). Of course, it will also work in the [Nemo client](/nemo-doc/guides/installing), if you have it installed.
 
 Note that all statements end with a full stop `.`, whereas whitespace and linebreaks are often not important.
 Anything from `%` to the end of the current line is a comment.
@@ -233,7 +233,7 @@ In exports, it is also possible to omit the `resource` parameter altogether. In 
 @export triples :- ntriples{compression="gzip"} .
 ```
 
-When using the [[Nemo command-line client|Nemo client]], some options are available to override the export directives in the program, to set the output (base) directory, and to control if existing files should be overwritten.
+When using the [Nemo command-line client](/nemo-doc/guides/cli), some options are available to override the export directives in the program, to set the output (base) directory, and to control if existing files should be overwritten.
 
 ## Built-in functions and predicates
 
@@ -254,7 +254,7 @@ In general, many functions in Nemo are named like corresponding functions in SPA
 ### General-purpose functions
 
 The following functions can be meaningfully used on data of arbitrary types:
-- `DATATYPE` returns the datatype of the value. For IRIs (and constant), the type is reported as `http://www.w3.org/2001/XMLSchema#anyURI`. For language-tagged strings, the type is `http://www.w3.org/1999/02/22-rdf-syntax-ns#langString`. As of Nemo v0.5.0, named nulls (blank nodes) have no defined type and `DATATYPE` does not return a valid result for such value. Moreover, the datatype is currently returned as a string, but will be an IRI in future versions ([#463](../../issues/463)).
+- `DATATYPE` returns the datatype of the value. For IRIs (and constant), the type is reported as `http://www.w3.org/2001/XMLSchema#anyURI`. For language-tagged strings, the type is `http://www.w3.org/1999/02/22-rdf-syntax-ns#langString`. As of Nemo v0.5.0, named nulls (blank nodes) have no defined type and `DATATYPE` does not return a valid result for such value. Moreover, the datatype is currently returned as a string, but will be an IRI in future versions ([#463](https://github.com/knowsys/nemo/issues/463)).
 - `STR` returns the value as a string. For IRIs, this is the IRI string itself. For all other datatypes, this is the canonical form of the lexical value (without any datatype).
 - `fullStr` returns the value as a string that is formatted as in RDF. Such stings would also be correct ways of writing the value in a Nemo rules file (though there might be shorter ways due to Nemo's abbreviations).
 
@@ -316,7 +316,7 @@ Nemo supports the usual Boolean functions (`AND`, `OR`, and `NOT`), but requires
 - `isNull`: tests if the argument is a named null (blank node)
 - `isString`: tests if the argument is a plain string (without a language tag)
 
-***Known restriction in Nemo v0.5.0.*** As of Nemo v0.5.0, functions that return booleans cannot yet be used as predicates in rule atoms ([#465](../../issues/465)).
+***Known restriction in Nemo v0.5.0.*** As of Nemo v0.5.0, functions that return booleans cannot yet be used as predicates in rule atoms ([#465](https://github.com/konwsys/nemo/issues/465)).
 For example, the following program computes `result("true"^^<http://www.w3.org/2001/XMLSchema#boolean>)`:
 
 ```
@@ -410,7 +410,7 @@ All variables that you use outside of aggregates in the head will implicitly bec
 sumOfsalariesByDepartment(?DEPARTMENT, #sum(?SALARY)) :- employee(?ID, ?DEPARTMENT, ?SALARY). % This infers the facts `sumOfsalariesByDepartment("IT", 40)` and `sumOfsalariesByDepartment("Sales", 80)`
 ```
 
-#### Distrinct variables
+#### Distinct variables
 
 *todo*
 

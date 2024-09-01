@@ -1,31 +1,11 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
-import { visit } from 'unist-util-visit';
-
-const updateLinks =
-  function (tree) {
-    if (!tree) return;
-    visit(tree, 'element', function (node, index, parent) {
-      if (
-        node.tagName === 'a' &&
-        typeof node.properties.href === 'string' &&
-        is(node, index, parent)
-      ) {
-        console.log(url)
-        if (url.startsWith("/")) {
-          const url = node.properties.href
-          node.properties.href = "/nemo-docs-unofficial.github.io" + url;
-        }
-      }
-    })
-  };
-
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://matzemathics.github.io/nemo-docs-unofficial.github.io/',
-  base: '/nemo-docs-unofficial.github.io',
-  outDir: './dist/nemo-docs-unofficial.github.io',
+  site: 'https://matzemathics.github.io/',
+  base: '/nemo-doc',
+  outDir: './dist/nemo-doc',
 
   integrations: [
     starlight({
@@ -52,7 +32,4 @@ export default defineConfig({
       ],
     }),
   ],
-  markdown: {
-    rehypePlugins: [updateLinks]
-  }
 });

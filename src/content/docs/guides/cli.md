@@ -2,7 +2,7 @@
 title: Command Line Interface
 ---
 
-Once you obtained the `nmo` executable (see [installation](/guides/installing)), you can execute nemo rule files:
+Once you obtained the `nmo` executable (see [installation](/nemo-doc/guides/installing)), you can execute nemo rule files:
 
 ```bash
 nmo my_rules.rls --export-dir results
