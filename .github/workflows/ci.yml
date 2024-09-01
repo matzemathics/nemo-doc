@@ -21,7 +21,7 @@ jobs:
       - name: Upload
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/nemo-docs-unofficial.github.io
+          path: dist/nemo-doc
 
   deploy:
     needs: build
