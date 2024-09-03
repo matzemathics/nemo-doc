@@ -1,0 +1,114 @@
+---
+title: Aggregate Functions
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+Aggregate functions allow computing values over groups of tuples. For example this can be used to compute the `#sum`, `#min`, `#max`, or `#count` of values.
+
+## Reference
+
+Aggregates can be used in head atoms of Nemo rules. Aggrates are computed after the evalutating body of a rule (e.g. arithmetic operations). Currently, there is a maximum of one aggregate per rule.
+
+The following aggregate functions are available:
+
+| Function | Arguments  | Description |
+|:---------|------------|-------------|
+| `#count` | `(?A, ⋯)` | Count of **distinct** tuples `(?A1, ?A2, ⋯, ?An)`. At least one argument is required. |
+| `#min`   | `(?A)`     | Minimum numerical value that `?A` takes. |
+| `#max`   | `(?A)`     | Maximum numerical value that `?A` takes. |
+| `#sum`   | `(?A, ⋯)` | Sum of the **distinct** numberical values of `?A`. If multiple parameters are given, the sum ranges over the first component `?A` of all *distinct* tuples `(?A, ?D1, ⋯, ?Dn)`. The distict variables allow to sum up the value of the aggregated variable multiple times, exactly once for ever combination of distinct variable values that are matched. |
+
+## Distinct values and grouping
+
+As mentioned in the reference above, aggregate functions only consider distinct values. This means that if you have multiple tuples with the same value, they will only be counted once. For example, if you have a table of people with their names, ages, and salaries:
+
+```
+person(1, anna, 18, 350).
+person(2, bob, 20, 400).
+person(3, carl, 18, 400).
+person(4, dave, 20, 500).
+person(5, emma, 18, 550).
+```
+
+You can count the number of distinct ages with the following rule:
+
+<Tabs>
+  <TabItem label="code" icon="seti:html">
+    ```
+    distinctAges(#count(?AGE)) :- person(_, _, ?AGE, _).
+    ```
+  </TabItem>
+  <TabItem label="result" icon="seti:csv">
+    | distinctAges |   |
+    |--------------|---|
+    |              | 2 |
+  </TabItem>
+</Tabs>
+
+### Multiple variables
+
+Generally, all aggregate functions only consider **distinct** values.
+Thus, if you want to count the number of entries in a table,
+you need to use some variable that is unique for each entry.
+
+If, however, you do not have such a variable,
+you can use multiple variables in conjunction.
+If we pretend that people can be uniquely identified by their age and name,
+we can count the number people as follows:
+
+<Tabs>
+  <TabItem label="code" icon="seti:html">
+    ```
+    distinctPeople(#count(?AGE, ?NAME)) :- person(_, ?NAME, ?AGE, _).
+    ```
+  </TabItem>
+  <TabItem label="result" icon="seti:csv">
+    | distinctPeople |   |
+    |----------------|---|
+    |                | 5 |
+  </TabItem>
+</Tabs>
+
+The same logic applies to the `#sum` aggregate function. Naively using `#sum` on the salary column would **not** result in the sum of all salaries, but rather the sum of all distinct salaries:
+
+<Tabs>
+  <TabItem label="code" icon="seti:html">
+    ```
+    fakeTotal(#sum(?SALARY)) :- person(_, _, _, ?SALARY).
+    ```
+  </TabItem>
+  <TabItem label="result" icon="seti:csv">
+    | fakeTotal |      |
+    |-----------|------|
+    |           | 1800 |
+  </TabItem>
+</Tabs>
+
+To fix this, you can use a unique variable, such as the ID, to sum up all salaries:
+
+<Tabs>
+  <TabItem label="code" icon="seti:html">
+    ```
+    totalSalary(#sum(?SALARY, ?ID)) :- person(?ID, _, _, ?SALARY).
+    ```
+  </TabItem>
+  <TabItem label="result" icon="seti:csv">
+    | totalSalary |      |
+    |-------------|------|
+    |             | 2200 |
+  </TabItem>
+</Tabs>
+
+### Grouping
+
+Usually, aggregate functions are not used in isolation, but occur in a head alongside other variables. This creates a natural grouping of the computed aggregate values. For example, if you want to count the number of people with the same age:
+
+```
+peopleWithSameAge(?AGE, #count(?ID)) :- person(?ID, _, ?AGE, _).
+```
+
+| peopleWithSame Age  |    |   |
+|---------------------|:--:|:-:|
+|                     | 18 | 3 |
+|                     | 20 | 2 |

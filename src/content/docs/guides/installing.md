@@ -83,7 +83,7 @@ rustup update nightly
 
 Moreover, Nemo requires the following dependency on Linux/Unix systems:
 
-- OpenSSL development packages (e.g., libssl-dev on Ubuntu or openssl-devel on Fedora)
+- OpenSSL development packages (e.g., `libssl-dev` on Ubuntu or `openssl-devel` on Fedora)
 
 Download the source code (from a release or this repository) and run
 
