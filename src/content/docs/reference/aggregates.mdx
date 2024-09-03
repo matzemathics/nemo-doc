@@ -104,11 +104,16 @@ To fix this, you can use a unique variable, such as the ID, to sum up all salari
 
 Usually, aggregate functions are not used in isolation, but occur in a head alongside other variables. This creates a natural grouping of the computed aggregate values. For example, if you want to count the number of people with the same age:
 
-```
-peopleWithSameAge(?AGE, #count(?ID)) :- person(?ID, _, ?AGE, _).
-```
-
-| peopleWithSame Age  |    |   |
-|---------------------|:--:|:-:|
-|                     | 18 | 3 |
-|                     | 20 | 2 |
+<Tabs>
+  <TabItem label="code" icon="seti:html">
+    ```
+    peopleWithSameAge(?AGE, #count(?ID)) :- person(?ID, _, ?AGE, _).
+    ```
+  </TabItem>
+  <TabItem label="result" icon="seti:csv">
+    | peopleWithSame Age  |    |   |
+    |---------------------|:--:|:-:|
+    |                     | 18 | 3 |
+    |                     | 20 | 2 |
+  </TabItem>
+</Tabs>
