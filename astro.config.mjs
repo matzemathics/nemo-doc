@@ -21,12 +21,13 @@ export default defineConfig({
             { label: 'Installing', slug: 'guides/installing' },
             { label: 'Command Line', slug: 'guides/cli' },
             { label: 'Rule Language', slug: 'guides/tour' },
-            { label: 'Broser Integration', slug: 'guides/wasm' },
+            { label: 'Browser Integration', slug: 'guides/wasm' },
             { label: 'Python API', slug: 'guides/python' },
           ],
         },
         {
           label: 'Language Reference',
+          // todo: reorder
           autogenerate: { directory: 'reference' },
         },
       ],

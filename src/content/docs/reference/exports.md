@@ -35,6 +35,7 @@ The following parameters are available for all formats:
 | Parameter | Description |
 | :-------- | :---------- |
 | `resource` | The file name to write to. If it contains an extension, this is used to automatically set the `gzip` parameter. |
+| `compression` | The compression to use. Currently only `gzip` is supported. |
 
 Instead of writing data to a file, one can also return it in the standard output (on the command line). For this, an empty string should be given as a resource, as in this example that prints the first 10 triples in RDF format:
 
