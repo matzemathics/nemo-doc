@@ -11,6 +11,10 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'Nemo Rule Engine',
+      logo: {
+        dark: './src/assets/nemo-logo-rusty-bright-nomargin.svg',
+        light: './src/assets/nemo-logo-rusty-nomargin.svg'
+      },
       customCss: [
         './src/tailwind.css'
       ],
