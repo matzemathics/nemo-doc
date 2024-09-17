@@ -22,31 +22,32 @@ The output will be gzipped (guessed from file name). Tuples that contain anythin
 
 Currently the following formats are supported:
 
-| Format | Description |
+| <span class="pe-8">Format</span> | Description |
 |:-------|-------------|
 | `csv`  | Comma-separated values. |
-| `dsv`  | Delimited separated values. (Like `csv`, but allows specifying different delimitors) |
-| `rdf` | RDF turtle format. |
+| `dsv`  | Delimited separated values. (Like `csv`, but allows specifying different delimiters) |
+| `rdf` | Generic RDF format. This chooses either `ntriples` or `nquads` based on the arity of the predicate. |
+| `ntriples` | RDF Ntriples format. |
+| `nquads` | RDF NQuads format. |
+| `trig` | RDF TriG format. |
+| `rdfxml` | RDF/XML format. |
+| `turtle` | RDF Turtle format. |
 
 ## Parameters
 
 The following parameters are available for all formats:
 
-| Parameter | Description |
+| <span class="pe-6">Parameter</span> | Description |
 | :-------- | :---------- |
-| `resource` | The file name to write to. If it contains an extension, this is used to automatically set the `gzip` parameter. |
-| `compression` | The compression to use. Currently only `gzip` is supported. |
+| `resource` | The file name to write to. If it contains an extension, this is used to automatically set the `compression` parameter. If set to the empty string `""`, the tuples are directed to the standard output. If omitted, this is set based on the predicate name, file format and compression type: `<predicate-name>.<format>.<compression>`. |
+| `compression` | The compression to use. Currently only `gzip` or `none` is supported. |
+| `limit` | The maximum number of tuples to export. |
 
-Instead of writing data to a file, one can also return it in the standard output (on the command line). For this, an empty string should be given as a resource, as in this example that prints the first 10 triples in RDF format:
+Besides the above, there are format-specific parameters:
 
-```
-@export triples :- turtle{resource="", limit=10} .
-```
+| <span class="pe-4">Parameter</span> | Formats | Description |
+| :-------- | :------ | :---------- |
+| `delimiter` | `dsv` | The delimiter to use. |
+| `format` | `csv`, `dsv` | The output-format of the exported data. Might be `int`, `double`, `string`, `rdf` or `skip`. |
 
-In exports, it is also possible to omit the `resource` parameter altogether. In this case, a default file name will be chosen based on the exported predicate, file format, and compression. For example, the following will export to `triples.nt.gz`:
-
-```
-@export triples :- ntriples{compression="gzip"} .
-```
-
-When using the [Nemo command-line client](/nemo-doc/guides/cli), some options are available to override the export directives in the program, to set the output (base) directory, and to control if existing files should be overwritten.
+When using the [Nemo command-line client](/nemo-doc/guides/cli), some cli options are available to override the export directives in the program, to set the output (base) directory, and to control if existing files should be overwritten.
