@@ -50,6 +50,7 @@ export default defineConfig({
         light: "./src/assets/nemo-logo-rusty-nomargin.svg",
       },
       customCss: ["./src/tailwind.css"],
+      favicon: "/favicon.svg",
       social: {
         github: "https://github.com/knowsys/nemo",
       },
