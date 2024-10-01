@@ -1,0 +1,11 @@
+<span class=comment>/* List */</span>
+0c2227, 18434e, 2a768a, 8cbfcc, e3eff3
+#0c2227, #18434e, #2a768a, #8cbfcc, #e3eff3
+
+<span class=comment>/* Comma Seperated */</span>
+0c2227,18434e,2a768a,8cbfcc,e3eff3
+#0c2227,#18434e,#2a768a,#8cbfcc,#e3eff3
+
+<span class=comment>/* Array */</span>
+["0c2227","18434e","2a768a","8cbfcc","e3eff3"]
+["#0c2227","#18434e","#2a768a","#8cbfcc","#e3eff3"]
