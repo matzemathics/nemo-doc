@@ -135,9 +135,7 @@ length(?X, STRLEN(?X)) :- input(?X) .
 
 Only one `length` fact will be computed, namely `length("example", 7)`, but there will not be any visible error.
 
-In general, many functions in Nemo are named like corresponding functions in SPARQL, and Nemo strives to implement them in the same way.
-
-***Known restriction in Nemo v0.5.0.*** As of Nemo v0.5.0, built-in functions are strictly case-sensitive. Using functions that are not recognized by Nemo leads to an error (in fact, a panic). Future versions of Nemo will support user-defined nested functions.
+In general, many functions in Nemo are named like corresponding functions in SPARQL, and Nemo strives to implement them in the same way. Built-ins are not case-sensitive.
 
 For a comprehensive list of built-in functions and predicates, see the section on [built-ins](/nemo-doc/reference/builtins).
 

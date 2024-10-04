@@ -68,7 +68,6 @@ Nemo supports the usual Boolean functions (`AND`, `OR`, and `NOT`), but requires
 - `isNull`: tests if the argument is a named null (blank node)
 - `isString`: tests if the argument is a plain string (without a language tag)
 
-***Known restriction in Nemo v0.5.0.*** As of Nemo v0.5.0, functions that return booleans cannot yet be used as predicates in rule atoms ([#465](https://github.com/konwsys/nemo/issues/465)).
 For example, the following program computes `result("true"^^<http://www.w3.org/2001/XMLSchema#boolean>)`:
 
 ```
