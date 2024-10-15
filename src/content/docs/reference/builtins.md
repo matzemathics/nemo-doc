@@ -22,7 +22,7 @@ Nemo supports the following functions on strings.
 that starts at the given index and extends to the end of the string. Optionally, the length of the substring can be supplied via a third parameter.
 - `STRAFTER`: takes two string parameters A and B, and returns the substring of A that follows the first occurrence of B in A. For example, `STRAFTER("3.14",".")` is `"14"`.
 - `STRBEFORE`: takes two string parameters A and B, and returns the substring of A that ends before the first occurrence of B in A. For example, `STRBEFORE("3.14",".")` is `"3"`.
-- `STRREV`: return the input string with its characters in reverse order.
+- `STRREV`: returns the input string with its characters in reverse order.
 - `COMPARE`: compares two strings alphabetically. The result is `-1` if the first string is alphabetically before the second, `1` if it is after, and `0` if they are equal.
 - `STRSTARTS`: checks if the string given as the first parameter starts with the string given as second parameter
 - `STRENDS`: checks if the string given as the first parameter ends with the string given as the second parameter
