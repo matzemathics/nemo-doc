@@ -27,7 +27,7 @@ that starts at the given index and extends to the end of the string. Optionally,
 - `STRSTARTS`: checks if the string given as the first parameter starts with the string given as second parameter
 - `STRENDS`: checks if the string given as the first parameter ends with the string given as the second parameter
 - `CONTAINS`: checks if the string given as the first parameter contains the string given as the second parameter
-- `REGEX`: check if the string given as the first parameter matches the regular expression given as second the parameter
+- `REGEX`: checks if the string given as the first parameter matches the regular expression given as second the parameter
 
 ### Functions for language tagged strings
 
