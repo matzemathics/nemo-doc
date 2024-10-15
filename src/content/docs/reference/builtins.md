@@ -97,7 +97,7 @@ Currently, infix operators are not allowed within nested terms. As a workaround,
 | Infix    | Name          |
 | -------- | --------------|
 | `=`      | `EQUALITY`    |
-| `!=`     | `UNEQUALITY`  |
+| `!=`     | `INEQUALITY`  |
 | `>`      | `NUMGREATER`  |
 | `>=`     | `NUMGREATEREQ`|
 | `<`      | `NUMLESS`     |
