@@ -7,7 +7,10 @@ import { favicons } from "favicons";
 const base = "/nemo-doc";
 
 async function faviconPlugin(options) {
-  const icons = await favicons("./logo/build/without-text/nemo-logo-rusty-nomargin.svg", options);
+  const icons = await favicons(
+    "./logo/build/without-text/nemo-logo-rusty-nomargin.svg",
+    options,
+  );
   return {
     name: "vite-plugin-favicons",
     order: "pre",
@@ -50,7 +53,7 @@ export default defineConfig({
         light: "./src/assets/nemo-logo-rusty-nomargin.svg",
       },
       customCss: [
-	      "./src/tailwind.css",
+        "./src/tailwind.css",
         "./src/styles/custom.css",
         // Fontsource files for to regular and semi-bold font weights.
         "@fontsource/comfortaa/400.css",
@@ -61,7 +64,7 @@ export default defineConfig({
         github: "https://github.com/knowsys/nemo",
       },
       components: {
-        SiteTitle: "./src/components/SiteTitle.astro"
+        SiteTitle: "./src/components/SiteTitle.astro",
       },
       sidebar: [
         {
