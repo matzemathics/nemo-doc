@@ -1,57 +1,41 @@
 ---
-import { logos } from 'virtual:starlight/user-images';
-import config from 'virtual:starlight/user-config';
-import type { Props } from '../props';
+import type { Props } from '@astrojs/starlight/props';
+import { Image } from 'astro:assets';
 const { siteTitle, siteTitleHref } = Astro.props;
+
+import dark from '../assets/nemo-logo-rusty-bright-nomargin.svg';
+import light from '../assets/nemo-logo-rusty-nomargin.svg';
 ---
 
-<a href={siteTitleHref} class="site-title sl-flex">
-	{
-		config.logo && logos.dark && (
-			<>
-				<img
-					class:list={{ 'light:sl-hidden': !('src' in config.logo) }}
-					alt={config.logo.alt}
-					src={logos.dark.src}
-					width={logos.dark.width}
-					height={logos.dark.height}
-				/>
-				{/* Show light alternate if a user configure both light and dark logos. */}
-				{!('src' in config.logo) && (
-					<img
-						class="dark:sl-hidden"
-						alt={config.logo.alt}
-						src={logos.light?.src}
-						width={logos.light?.width}
-						height={logos.light?.height}
-					/>
-				)}
-			</>
-		)
-	}
-	<span class:list={{ 'sr-only': config.logo?.replacesTitle }}>
-		{siteTitle}
-    <span class="font-normal text-base ml-3">
-      Graph Rule Engine
-    </span>
+<a href={siteTitleHref} class="flex gap-0 content-center no-underline site-title-link">
+  <Image
+    format="svg"
+    class="light:sl-hidden mr-2"
+    alt=""
+    src={dark}
+  />
+  <Image
+    format="svg"
+    class="dark:sl-hidden mr-2"
+    alt=""
+    src={light}
+  />
+	<span class="comfortaa content-center">
+    <span class="font-semibold text-2xl site-title mx-1">Nemo</span>
+    <span class="font-normal text-base mx-1 max-[500px]:hidden min-[500px]:visible">Graph Rule Engine</div>
 	</span>
 </a>
 
 <style>
-	.site-title {
-		align-items: center;
-		gap: var(--sl-nav-gap);
-		font-size: var(--sl-text-h4);
-		font-weight: 600;
-		color: var(--sl-color-text-accent);
+  .site-title-link {
 		text-decoration: none;
-		white-space: nowrap;
+		color: var(--sl-color-text-accent);
+  }
+
+	.comfortaa {
 		font-family: "Comfortaa";
 	}
-  .site-sub-title {
-    font-size: var(--sl-text-h5);
-    font-weight: 400;
-  }
+
 	img {
 		height: calc(var(--sl-nav-height) - 2 * var(--sl-nav-pad-y));
 		width: auto;

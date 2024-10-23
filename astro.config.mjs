@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, passthroughImageService } from "astro/config";
 import starlight from "@astrojs/starlight";
 
 import tailwind from "@astrojs/tailwind";
@@ -48,10 +48,6 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "Nemo",
-      logo: {
-        dark: "./src/assets/nemo-logo-rusty-bright-nomargin.svg",
-        light: "./src/assets/nemo-logo-rusty-nomargin.svg",
-      },
       customCss: [
         "./src/tailwind.css",
         "./src/styles/custom.css",
@@ -87,6 +83,7 @@ export default defineConfig({
     }),
     tailwind(),
   ],
+  image: { service: passthroughImageService() },
   vite: {
     plugins: [
       faviconPlugin({
